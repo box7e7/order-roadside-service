@@ -1,0 +1,18 @@
+---
+- name: Sync and build roadside-dispatch app
+  hosts: local
+  tasks:
+    - name: Rsync roadside-dispatch to remote server
+      ansible.builtin.command:
+        cmd: rsync -av --exclude="node_modules" --exclude=".git" --exclude=".next" ~/roadside-dispatch mehdi@10.8.0.6:/home/mehdi
+
+- name: Build and restart app on remote server
+  hosts: remote
+  tasks:
+    - name: Run build and restart on remote server
+      ansible.builtin.shell: |
+        cd /home/mehdi/roadside-dispatch
+        /home/mehdi/.asdf/shims/yarn install
+        /home/mehdi/.asdf/shims/yarn run build
+        /home/mehdi/.asdf/shims/pm2 restart run
+

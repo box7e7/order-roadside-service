@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation - Towing and Roadside Service</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      background-color: #2c3e50;
+      padding: 20px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      color: #ffffff;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+    .content {
+      padding: 20px;
+    }
+    .content h2 {
+      font-size: 20px;
+      color: #2c3e50;
+    }
+    .content p {
+      line-height: 1.6;
+      font-size: 16px;
+    }
+    .order-details {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 15px;
+    }
+    .order-details h3 {
+      font-size: 18px;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+    .order-details table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .order-details table th,
+    .order-details table td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    .order-details table th {
+      background-color: #ecf0f1;
+      color: #333;
+    }
+    .footer {
+      background-color: #f4f4f4;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #888;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+    .footer a {
+      color: #3498db;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Order Confirmation</h1>
+    </div>
+    <div class="content">
+      <h2>Thank you for your order!</h2>
+      <p>Dear {{customer_name}},</p>
+      <p>Your order for roadside assistance and towing service has been confirmed. Below are the details of your service:</p>
+
+      <div class="order-details">
+        <h3>Order Details</h3>
+        <table>
+          <tr>
+            <th>Service Type</th>
+            <td>{{service_type}}</td>
+          </tr>
+          <tr>
+            <th>Vehicle</th>
+            <td>{{vehicle_make_model}}</td>
+          </tr>
+          <tr>
+            <th>Service Date</th>
+            <td>{{service_date}}</td>
+          </tr>
+          <tr>
+            <th>Pickup Location</th>
+            <td>{{pickup_location}}</td>
+          </tr>
+          <tr>
+            <th>Destination</th>
+            <td>{{destination}}</td>
+          </tr>
+          <tr>
+            <th>Estimated Arrival Time</th>
+            <td>{{estimated_arrival_time}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <p>If you have any questions or need to update your service details, feel free to contact us at <a href="mailto:support@momentum-roadside.com">support@momentum-roadside.com</a> or call us at [Support Phone Number].</p>
+      
+      <p>We appreciate your business and look forward to assisting you!</p>
+      
+      <p>Best regards,<br>The Momentum Roadside Services LLC Team</p>
+    </div>
+    <div class="footer">
+      <p>&copy; {{year}} Momentum Roadside Services LLC. All rights reserved.</p>
+      <p><a href="https://momentum-roadside.com/">Visit our website</a> | <a href="mailto:support@momentum-roadside.com">Contact Support</a></p>
+    </div>
+  </div>
+</body>
+</html>

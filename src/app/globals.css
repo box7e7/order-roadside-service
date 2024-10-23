@@ -25,3 +25,98 @@ body {
     text-wrap: balance;
   }
 }
+
+.dispatch-icon {
+    @apply flex h-20 w-20 mt-2 mb-2 items-center justify-center text-green-500
+      hover:text-white rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear ;
+  }
+
+  .span-text {
+    @apply absolute text-black w-auto p-2 m-2 min-w-max 
+    transition-all duration-100 origin-left scale-100 top-20 font-bold;
+  }
+
+  .pac-container:after {
+    background-image: none !important;
+    height: 0px;
+    padding: 0;
+    margin: 0;
+}
+
+/* Google Maps Autocomplete styles */
+.pac-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  margin-top: 2px;
+}
+
+.pac-item {
+  cursor: pointer;
+  padding: 8px 12px;
+  color: white;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pac-item:hover {
+  background-color: rgba(0 , 0, 0, 0.4);
+}
+
+.pac-item-selected,
+.pac-item-selected:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.pac-matched {
+  font-weight: 700;
+  color: #4CAF50;
+}
+
+.pac-icon {
+  filter: invert(1);
+}
+
+.pac-item-query {
+  color: white;
+}
+
+.progress0 {
+  animation: progress 4s linear 1;
+
+ }
+
+ #__next{
+  height: 100%;
+ }
+
+ 
+
+@keyframes progress {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+    
+  }
+}
+
+
+@keyframes wiggle {
+  0%, 7% { transform: rotate(0); }
+  15% { transform: rotate(-15deg); }
+  20% { transform: rotate(10deg); }
+  25% { transform: rotate(-10deg); }
+  30% { transform: rotate(6deg); }
+  35% { transform: rotate(-4deg); }
+  40%, 100% { transform: rotate(0); }
+}
+
+.animate-wiggle {
+  animation: wiggle 2s linear 1;
+}
+
+
