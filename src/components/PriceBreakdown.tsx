@@ -56,16 +56,18 @@ const PriceBreakdownComponent: React.FC<PriceBreakdownProps> = ({ service, dista
     if (distance) {
       setIsLoading(false);
       
-      if (service === "tow") {
+      if (service === "tow" || service === "winch out" || service === "motorcycle") {
         setLocalTotal(90 + (parseInt(distance)/1.6) * 5);
-      } else if (service === "jump start" || service === "tire" || service === "lock out") {
+      } 
+    }
+
+    if (service === "jump start" || service === "tire" || service === "lock out") {
         setLocalTotal(65);
       } else if (service === "fuel") {
         setLocalTotal(75);
       }
-      
-      setTotal(total);
-    }
+
+    setTotal(total);
   }, [total, service, distance]);
 
   return (
@@ -73,11 +75,12 @@ const PriceBreakdownComponent: React.FC<PriceBreakdownProps> = ({ service, dista
       <div className='flex justify-center items-center flex-col pb-4'>
         <div className='text-3xl font-bold text-gray-800 mb-2'>GET HELP NOW</div>
         <div className='text-[#11A9C9] text-5xl font-bold font-serif mb-6 h-16 flex items-center justify-center'>
-          {isLoading ? (
+          { service==="tow" || service==="winch out" || service==="motorcycle"  ? (isLoading ? (
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#11A9C9]"></div>
           ) : (
             `$${total.toFixed(2)}`
-          )}
+          )
+          ):  `$${total.toFixed(2)}`}
         </div>
       </div>
       <div className="container mx-auto">

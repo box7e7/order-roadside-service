@@ -31,6 +31,8 @@ const ServiceSummary: React.FC = () => {
 
   const [total, setTotal] = useState(0);
 
+  console.log("$$$$$ total $$$$$$", total);
+
   useEffect(() => {
     const calculateDistanceAndTime = async () => {
       if (pickupAddress && dropOffAddress) {
