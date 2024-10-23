@@ -49,4 +49,5 @@ export interface TowQuestions {
     phoneNumber: string;
     distance: string;
     estimatedTime: string;
+    total: string | number;
   }

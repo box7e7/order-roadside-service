@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
       serviceDate,
       pickupLocation,
       destination,
-      estimatedArrivalTime,
+      total,
       year,
       customerEmail
     } = body;
@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
       serviceDate,
       pickupLocation,
       destination,
-      estimatedArrivalTime,
+      total,
       year,
       customerEmail
     });

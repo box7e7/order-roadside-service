@@ -9,7 +9,7 @@ interface EmailParams {
   serviceDate: string;
   pickupLocation: string;
   destination: string;
-  estimatedArrivalTime: string;
+  total: number;
   year: string;
   customerEmail: string;
 }
@@ -21,7 +21,7 @@ export async function sendOrderConfirmationEmail({
   serviceDate,
   pickupLocation,
   destination,
-  estimatedArrivalTime,
+  total,
   year,
   customerEmail
 }: EmailParams): Promise<void> {
@@ -37,7 +37,7 @@ export async function sendOrderConfirmationEmail({
     .replace("{{service_date}}", serviceDate)
     .replace("{{pickup_location}}", pickupLocation)
     .replace("{{destination}}", destination)
-    .replace("{{estimated_arrival_time}}", estimatedArrivalTime)
+    .replace("{{total}}", `$${total.toFixed(2)}`)
     .replace("{{year}}", year);
 
   // Set the API endpoint

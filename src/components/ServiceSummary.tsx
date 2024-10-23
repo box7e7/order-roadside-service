@@ -81,7 +81,8 @@ const ServiceSummary: React.FC = () => {
         phoneNumber,
         distance,
         estimatedTime,
-        poNumber
+        poNumber,
+        total,
       }), { maxAge: 3600 });
 
       // Create Stripe checkout session
