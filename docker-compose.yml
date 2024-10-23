@@ -7,8 +7,17 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3033:3000"
+
     environment:
-      - NODE_ENV=production
+    - NODE_ENV=production
+    - NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=fhhfhfhf
+    - GOOGLE_MAPS_API_KEY=dddd
+    - SUPABASE_URL=ffff
+    - SUPABASE_KEY=dddd
+    - NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=dddd
+    - STRIPE_SECRET_KEY=dddd
+    - ZOHO_API_KEY=ewefwefwef  
+ 
     # volumes:
     #   - /root/bmw-momentum/scripts/cookies_towbook.json:/app/scripts/cookies_towbook.json
     restart: unless-stopped
