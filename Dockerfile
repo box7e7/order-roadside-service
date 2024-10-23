@@ -6,23 +6,24 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
-# Create .env and .env.local files
-RUN touch /app/.env /app/.env.local
-
-# Copy environment files if they exist locally
-COPY .env* /app/
+COPY . .
 
 # Build the Next.js app
 RUN yarn build
 
-COPY --from=builder /app /app
+# Stage 2: Production image
+FROM node:18-alpine
 
-RUN yarn install --frozen-lockfile --production
+WORKDIR /app
 
-# Create .env and .env.local files
+COPY --from=builder /app/next.config.mjs ./
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+
 # Expose the port that Next.js listens on
 EXPOSE 3000
 
-
-# Start Next.js without cron
+# Start Next.js
 CMD ["yarn", "start"]

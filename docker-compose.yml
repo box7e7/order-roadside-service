@@ -5,13 +5,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      target: production  # Define the target stage (production)
     ports:
-      - "3033:3000" # Map port 3000 on host to port 3000 in the container
-    volumes:
-      - /root/bmw-momentum/scripts/cookies_towbook.json:/app/scripts/cookies_towbook.json # Mount host scripts folder to the container
+      - "3000:3000"
     environment:
       - NODE_ENV=production
-    command: ["yarn", "start"]
+    volumes:
+      - /root/bmw-momentum/scripts/cookies_towbook.json:/app/scripts/cookies_towbook.json
+    restart: unless-stopped
 
 # Optional: If you want to add more services (like a database), you can do that here.
