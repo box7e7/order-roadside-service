@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { useStore } from '@/store/store';
 import { loadStripe } from '@stripe/stripe-js';
 import { setCookie } from 'cookies-next';
@@ -25,40 +25,14 @@ const ServiceSummary: React.FC = () => {
     phoneNumber,
     distance,
     estimatedTime,
-    setDistance,
-    setEstimatedTime
+
   } = useStore();
 
   const [total, setTotal] = useState(0);
 
   console.log("$$$$$ total $$$$$$", total);
 
-  useEffect(() => {
-    const calculateDistanceAndTime = async () => {
-      if (pickupAddress && dropOffAddress) {
-        try {
-          const response = await fetch('/api/map-distance', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ origin: pickupAddress, destination: dropOffAddress }),
-          });
-          await new Promise(resolve => setTimeout(resolve, 3000));
-          const data = await response.json();
-          if (data.rows && data.rows[0].elements && data.rows[0].elements[0].status === 'OK') {
-            const { distance, duration } = data.rows[0].elements[0];
-            setDistance(distance.text);
-            setEstimatedTime(duration.text);
-          }
-        } catch (error) {
-          console.error('Error calculating distance:', error);
-        }
-      }
-    };
 
-    calculateDistanceAndTime();
-  }, [pickupAddress, dropOffAddress, setDistance, setEstimatedTime]);
 
   const handleCheckout = async () => {
     try {

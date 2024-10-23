@@ -19,8 +19,10 @@ interface ContactInformationFormProps {
 }
 
 const ContactInformationForm: React.FC<ContactInformationFormProps> = ({ errors, setErrors }) => {
-  const { fullName, setFullName, email, setEmail, phoneNumber, setPhoneNumber } = useStore();
+  const { fullName, setFullName, email, setEmail, phoneNumber, setPhoneNumber,pickupAddress, dropOffAddress, setDistance,  setEstimatedTime } = useStore();
   const [touched, setTouched] = useState({ fullName: false, email: false, phoneNumber: false });
+
+  
 
   const validateFullName = (value: string) => {
     if (!value.trim()) {
@@ -81,6 +83,36 @@ const ContactInformationForm: React.FC<ContactInformationFormProps> = ({ errors,
       phoneNumber: phoneNumber ? validatePhoneNumber(phoneNumber) : '',
     });
   }, []);
+
+
+  useEffect(() => {
+
+    const calculateDistanceAndTime = async () => {
+      if (pickupAddress && dropOffAddress) {
+        try {
+          const response = await fetch('/api/map-distance', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ origin: pickupAddress, destination: dropOffAddress }),
+          });
+          await new Promise(resolve => setTimeout(resolve, 3000));
+          const data = await response.json();
+          if (data.rows && data.rows[0].elements && data.rows[0].elements[0].status === 'OK') {
+            const { distance, duration } = data.rows[0].elements[0];
+            setDistance(distance.text);
+            setEstimatedTime(duration.text);
+          }
+        } catch (error) {
+          console.error('Error calculating distance:', error);
+        }
+      }
+    };
+
+    calculateDistanceAndTime();
+
+  },[pickupAddress, dropOffAddress])
 
   return (
     <div className="w-full max-w-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
