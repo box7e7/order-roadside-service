@@ -6,11 +6,11 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "3033:3000"
     environment:
       - NODE_ENV=production
-    volumes:
-      - /root/bmw-momentum/scripts/cookies_towbook.json:/app/scripts/cookies_towbook.json
+    # volumes:
+    #   - /root/bmw-momentum/scripts/cookies_towbook.json:/app/scripts/cookies_towbook.json
     restart: unless-stopped
 
 # Optional: If you want to add more services (like a database), you can do that here.
