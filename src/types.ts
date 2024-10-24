@@ -50,4 +50,5 @@ export interface TowQuestions {
     distance: string;
     estimatedTime: string;
     total: string | number;
+    poNumber: number;
   }

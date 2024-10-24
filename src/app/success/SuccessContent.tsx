@@ -86,7 +86,7 @@ export default function SuccessContent() {
         name: metadata.fullName,
         phone: metadata.phoneNumber,
         email: metadata.email,
-        PO: "0",
+        PO: metadata.poNumber,
         serviceType: metadata.service.charAt(0).toUpperCase() + metadata.service.slice(1),
         notes: metadata.towQuestions?.specialNotes || ""
       };
