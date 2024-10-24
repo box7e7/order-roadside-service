@@ -19,7 +19,7 @@ export async function POST(req) {
     // PO ? job["PO"] = padWithZeros(PO + 1, 7) : job["PO"] = padWithZeros(1, 7);
 
     if(PO){
-      job["PO"] = padWithZeros(PO + 1, 7);
+      job["PO"] = padWithZeros(PO, 7);
     }
     else{
       job["PO"] = padWithZeros(1, 7);
