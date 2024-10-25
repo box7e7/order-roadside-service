@@ -95,7 +95,7 @@ const ServiceSummary: React.FC = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          amount: total*100,
+          amount: Math.round(total * 100),
           customer: {
             name: fullName,
             email: email,
